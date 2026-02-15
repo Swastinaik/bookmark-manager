@@ -24,14 +24,6 @@ export function proxy(request: NextRequest) {
         return NextResponse.next();
     }
 
-    // 3) Check if user is authenticated
-    const token = request.cookies.get("sb-token")?.value;
-
-    if (!token) {
-        // Not authenticated → send to login
-        return NextResponse.redirect(new URL("/login", request.url));
-    }
-
     // 4) If authenticated, continue normally
     return NextResponse.next();
 }

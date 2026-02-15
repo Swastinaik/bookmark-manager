@@ -10,8 +10,6 @@ export default function LoginPage() {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'google',
             options: {
-                // CRITICAL: This tells Google where to send Alex back to.
-                // We will build this route in Step 4.
                 redirectTo: `${location.origin}/auth/callback`,
             },
         })

@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👨💻 About me
 
-## Getting Started
+Hi! I'm Swasti Naik, a software engineer passionate about full-stack development and system architecture.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Tech stack
+Next.js 16
+Supabase 
+TypeScript
+Tailwindcss
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 🚀 How I Built This:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Developing this Bookmark Manager was more than just a coding assignment; it was a deep dive into the architecture of modern real-time applications.
 
-## Learn More
+My goal was to build a system where User A could add a bookmark on their phone, and see it appear instantly on their laptop without a page refresh—all while keeping data strictly private and secure.
 
-To learn more about Next.js, take a look at the following resources:
+To achieve this, I architected the app using Next.js 16 (App Router) for the frontend/backend hybrid and Supabase as the Backend-as-a-Service (BaaS) to handle the heavy lifting of Websockets and Auth.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# 🧠 The Hardest Part: The "Hydration Gap"
 
-## Deploy on Vercel
+Initially, I relied solely on the client-side listener to populate the bookmarks. This resulted in a "flash of empty content" or users seeing an empty list ([]) because the listener hadn't "caught" any historical data yet. I realized that a listener is great for future events, but terrible for past history.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The Solution:
+I implemented the Hydration Pattern.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Server Fetch: I utilized Next.js Server Components to fetch the initial "snapshot" of the database securely on the server.
+
+Client Handoff: This snapshot is passed as initial props to the Client Component.
+
+Real-time Stitching: The client component then initializes the Supabase channel, listening only for new changes to stitch onto the existing list.
+
+
+## Contact Details :
+Email : swastinaik273@gmail.com
+Mobile no : +919353176010
